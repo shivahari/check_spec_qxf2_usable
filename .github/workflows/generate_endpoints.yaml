@@ -1,0 +1,22 @@
+name: Generate Endpoints file
+
+on: push
+
+jobs:
+  generate_endpoints:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install python
+        uses: actions/setup-python@v3
+
+      - name: Copy Repository contents
+        uses: actions/checkout@${GITHUB_REF}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate Endpoints from the spec
+        run: |
+          python generate_endpoint_from_openapi_spec.py
