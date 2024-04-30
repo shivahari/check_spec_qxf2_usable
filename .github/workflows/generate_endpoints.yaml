@@ -10,7 +10,7 @@ jobs:
         uses: actions/setup-python@v3
 
       - name: Copy Repository contents
-        uses: actions/checkout@${GITHUB_REF}
+        uses: actions/checkout@main
 
       - name: Install dependencies
         run: |
